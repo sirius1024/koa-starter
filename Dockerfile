@@ -1,4 +1,4 @@
-FROM node:8.4.0-alpine
+FROM node-alpine
 WORKDIR /app
 # moved package first to enabled package caching in docker build step
 COPY package.json .
