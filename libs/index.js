@@ -67,13 +67,13 @@ const setLogger = (customLogConfig) => {
 };
 
 
-//global setting mongodb,mysql,mssql,oracle or redis something like that
-const setDatabase = () => {
-    let dbFiles = fs.readdirSync(path.join(process.cwd(), 'libs/databases'));
-    dbFiles.forEach(fileName => {
-        require(path.join(process.cwd(), 'libs/databases', fileName));
-    })
-};
+// //global setting mongodb,mysql,mssql,oracle or redis something like that
+// const setDatabase = () => {
+//     let dbFiles = fs.readdirSync(path.join(process.cwd(), 'libs/databases'));
+//     dbFiles.forEach(fileName => {
+//         require(path.join(process.cwd(), 'libs/databases', fileName));
+//     })
+// };
 
 //global setting koa-middwares, mostly is app.use(xxx)
 const setMiddlewares = () => {
@@ -109,4 +109,4 @@ const initialized = () => {
     })
 };
 
-module.exports = [setGlobal, setConf, setLogger, setDatabase, setMiddlewares, setRouters, initialized];
+module.exports = [setGlobal, setConf, setLogger,  setMiddlewares, setRouters, initialized];

@@ -1,7 +1,7 @@
 const router = new Router();
 const Encrypt = require("../utils/custom-encry");
 
-const clientsModel = require("../models/clients");
+//const clientsModel = require("../models/clients");
 
 //拦截器，用于验证签名以及白名单放行，目前只拦截post请求
 router.post("/*", async (ctx, next) => {
@@ -16,25 +16,26 @@ router.post("/*", async (ctx, next) => {
 
   Logger.trace(`默认拦截 --> ${ctx.originalUrl}`);
 
-  //去数据库查client key TODO: 长驻数据，可以考虑放到redis中
-  let clientData = await clientsModel
-    .findOne({
-      clientId: reqParams.client_id
-    })
-    .lean();
-  let encrypt = new Encrypt(reqParams, clientData.clientKey);
-  if (encrypt.encrypt(reqParams) != reqParams.sign) {
-    Logger.log(
-      `拦截未匹配签名的请求 - ${ctx.originalUrl} - ${encrypt.encrypt(
-        reqParams
-      )}`
-    );
-    ctx.status = 403;
-    ctx.body = {
-      error: "sign not match"
-    };
-    return;
-  }
+  //这里可以自定定义拦截器
+
+  // let clientData = await clientsModel
+  //   .findOne({
+  //     clientId: reqParams.client_id
+  //   })
+  //   .lean();
+  // let encrypt = new Encrypt(reqParams, clientData.clientKey);
+  // if (encrypt.encrypt(reqParams) != reqParams.sign) {
+  //   Logger.log(
+  //     `拦截未匹配签名的请求 - ${ctx.originalUrl} - ${encrypt.encrypt(
+  //       reqParams
+  //     )}`
+  //   );
+  //   ctx.status = 403;
+  //   ctx.body = {
+  //     error: "sign not match"
+  //   };
+  //   return;
+  // }
   Logger.trace(`签名放行 --> ${ctx.originalUrl}`);
   await next();
 });
