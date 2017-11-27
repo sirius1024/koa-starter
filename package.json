@@ -1,0 +1,53 @@
+{
+    "name": "koa-starter",
+    "shortname": "STARTER",
+    "version": "0.0.1",
+    "description": "iHealth Beijing SMS Center",
+    "main": "bin/www",
+    "private": true,
+    "dev_mongo": "mongodb://admin:123456@localhost:27017/dbname?replicaSet=rpname",
+    "prod_mongo": "",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "api": "",
+        "dev": "export NODE_ENV=development MONGO_URL=$npm_package_dev_mongo && node bin/www",
+        "prod": "export NODE_ENV=production MONGO_URL=$npm_package_prod_mongo && nodemon bin/www"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sirius1024/koa-starter.git"
+    },
+    "keywords": [
+        "sms",
+        "koa",
+        "ihealth"
+    ],
+    "author": "sirius <cealer@foxmail.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/sirius1024/koa-starter/issues"
+    },
+    "homepage": "https://github.com/sirius1024/koa-starter#readme",
+    "dependencies": {
+        "alphabetjs": "^0.1.3",
+        "colors": "^1.1.2",
+        "debug": "^2.6.8",
+        "koa": "^2.3.0",
+        "koa-body": "^2.3.0",
+        "koa-favicon": "^2.0.0",
+        "koa-json": "^2.0.2",
+        "koa-logger": "^3.0.1",
+        "koa-onerror": "^3.1.0",
+        "koa-router": "^7.2.1",
+        "koa-static": "^4.0.1",
+        "koa-views": "^6.0.2",
+        "lodash": "^4.17.4",
+        "moment": "^2.18.1",
+        "pug": "^2.0.0-rc.3",
+        "shortid": "^2.2.8",
+        "tracer": "^0.8.9",
+        "uuid": "^3.1.0",
+        "mongoose": "^4.11.5",
+        "mongoose-auto-increment": "^5.0.1"
+    }
+}

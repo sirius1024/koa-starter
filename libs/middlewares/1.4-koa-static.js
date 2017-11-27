@@ -1,0 +1,1 @@
+app.use(require('koa-static')(path.join(process.cwd(), 'public')));
