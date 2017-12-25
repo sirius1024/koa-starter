@@ -9,8 +9,6 @@ if (process.platform === "win32") {
     });
 }
 process.on('SIGINT', () => {
-    clearInterval(IntervalReceiveMsg);
-    Logger.trace('clear aliyun message queue interval call.')
     mongoose.disconnect();
     setTimeout(() => {
         process.exit(0)
@@ -19,7 +17,5 @@ process.on('SIGINT', () => {
 
 process.on('exit', (code) => {
     Logger.log(`About to exit with code: ${code}`);
-    clearInterval(IntervalReceiveMsg);
-    Logger.trace('clear aliyun message queue interval call.')
     mongoose.disconnect();
 });
